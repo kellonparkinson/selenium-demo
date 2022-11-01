@@ -8,6 +8,16 @@ const search = async (driver, searchTerm) => {
     // into that element, and the \n to hit enter after typing the search term
     await driver.findElement(By.name('q')).sendKeys(`${searchTerm}\n`)
 
+    //-----Second search--------------
+        // Clear the search bar, 'q' before executing next search
+    await driver.findElement(By.name('q')).clear()
+
+    // second search is hard coded instead of using the param
+    await driver.findElement(By.name('q')).sendKeys('crypto currency\n')
+
+    // use XPath to select a link (or anchor)
+    await driver.findElement(By.xpath('//a[text()="Images"]')).click()
+
     // We are then setting a variable to be the text from the results of our Google search
     // Instead of using the sendKeys method, we are using the getText method which will return 
     // the text in that element as a string
